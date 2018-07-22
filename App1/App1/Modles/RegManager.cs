@@ -91,16 +91,40 @@ namespace App1.Modles
             }
             regs.Add(new Regs("TIMERxTIM", RegCategoly.PIE));
 
-            string[] list_eQEP = { "TBPRD", "TBPHS","TBCTR","TBCTL","TBSTS","TBPHSHR",
-                                "CMPA","CMPB","CMPCTL","CMPAHR",
-                                "AQCTLA","AQCTLB","AQSFRC","AQCSFRC",
-                                "DBCTL","DBRED","DBFED","PCCTL",
-                                "TZSEL","TZCTL","TZEINT","TZFLG","TZCLR","TZFRC",
-                                "ETSEL","ETPS","ETFLG","ETCLR","ETFRC","HRCNFG"};
-            foreach (var item in list_ePWM)
+            string[] list_eQEP = { "QEDCCTL", "QEPCTL","QPOSCTL","QCAPCTL","QPOSCNT","QPOSINIT",
+                                "QPOSMAX","QPOSCMP","QPOSILAT","QPOSSLAT",
+                                "QPOSLAT","QUTMR","QUPRD","QWDTMR",
+                                "QWDPRD","QEINT","QFLG","QCLR",
+                                "QFRC","QEPSTS","QCTMR","QCPRD","QCTMRLAT","QCPRDLAT"};
+            foreach (var item in list_eQEP)
             {
-                regs.Add(new Regs(item, RegCategoly.ePWM));
+                regs.Add(new Regs(item, RegCategoly.eQEP));
             }
+
+            string[] list_ADC = { "ADCTRL1", "ADCTRL2","ADCTRL3","ADCMAXCONV","ADCASEQSR","ADCST",
+                                "ADCCHSELSEQn","ADCRESULTn","ADCREFSEL","ADCOFFTRIM"};
+            foreach (var item in list_ADC)
+            {
+                regs.Add(new Regs(item, RegCategoly.ADC));
+            }
+
+            string[] list_SCI = { "SCICCR", "SCICTL1","SCIBAUD","SCICTL2","SCIRXST",
+                                "SCIRXEMU","SCIRXBUF","SCITXBUF","SCIFFTX",
+                                "SCIFFRX","SCIFFCT","SCIPRI"};
+            foreach (var item in list_SCI)
+            {
+                regs.Add(new Regs(item, RegCategoly.SCI));
+            }
+
+            string[] list_SPI = { "SPICCR", "SPICTL","SPISTS","SPIBRR","SPIRXEMU",
+                                "SPIRXBUF","SPITXBUF","SPIDAT","SPIFFTX",
+                                "SPIFFRX","SPIPRI"};
+            foreach (var item in list_SPI)
+            {
+                regs.Add(new Regs(item, RegCategoly.SPI));
+            }
+
+
             regs.Add(new Regs("TIMERxTIM", RegCategoly.CPUTimer));
             regs.Add(new Regs("TIMERxTIM", RegCategoly.CPUTimer));
             regs.Add(new Regs("TIMERxTIM", RegCategoly.CPUTimer));
