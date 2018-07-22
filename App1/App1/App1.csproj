@@ -1,0 +1,378 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{5205A6D8-2FC0-429F-8CD1-C2CD8463B27A}</ProjectGuid>
+    <OutputType>AppContainerExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>App1</RootNamespace>
+    <AssemblyName>App1</AssemblyName>
+    <DefaultLanguage>zh-CN</DefaultLanguage>
+    <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
+    <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.17134.0</TargetPlatformVersion>
+    <TargetPlatformMinVersion>10.0.15063.0</TargetPlatformMinVersion>
+    <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WindowsXamlEnableOverview>true</WindowsXamlEnableOverview>
+    <PackageCertificateKeyFile>App1_TemporaryKey.pfx</PackageCertificateKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\ARM\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
+    <OutputPath>bin\ARM\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modles\MainReg.cs" />
+    <Compile Include="Modles\RegManager.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppxManifest Include="Package.appxmanifest">
+      <SubType>Designer</SubType>
+    </AppxManifest>
+    <None Include="App1_TemporaryKey.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\adc\ADCASEQSR.png" />
+    <Content Include="Assets\adc\ADCCHSELSEQn.png" />
+    <Content Include="Assets\adc\ADCMAXCONV.png" />
+    <Content Include="Assets\adc\ADCOFFTRIM.png" />
+    <Content Include="Assets\adc\ADCREFSEL.png" />
+    <Content Include="Assets\adc\ADCRESULTn.png" />
+    <Content Include="Assets\adc\ADCST.png" />
+    <Content Include="Assets\adc\ADCTRL1.png" />
+    <Content Include="Assets\adc\ADCTRL2.png" />
+    <Content Include="Assets\adc\ADCTRL3.png" />
+    <Content Include="Assets\can\CANAA.png" />
+    <Content Include="Assets\can\CANBTC.png" />
+    <Content Include="Assets\can\CANES.png" />
+    <Content Include="Assets\can\CANGAM.png" />
+    <Content Include="Assets\can\CANGIF.png" />
+    <Content Include="Assets\can\CANGIM.png" />
+    <Content Include="Assets\can\CANMC.png" />
+    <Content Include="Assets\can\CANMD.png" />
+    <Content Include="Assets\can\CANME.png" />
+    <Content Include="Assets\can\CANMIL.png" />
+    <Content Include="Assets\can\CANMIM.png" />
+    <Content Include="Assets\can\CANOPC.png" />
+    <Content Include="Assets\can\CANRFP.png" />
+    <Content Include="Assets\can\CANRIOC.png" />
+    <Content Include="Assets\can\CANRML.png" />
+    <Content Include="Assets\can\CANRMP.png" />
+    <Content Include="Assets\can\CANTA.png" />
+    <Content Include="Assets\can\CANTECREC.png" />
+    <Content Include="Assets\can\CANTIOC.png" />
+    <Content Include="Assets\can\CANTOC.png" />
+    <Content Include="Assets\can\CANTOS.png" />
+    <Content Include="Assets\can\CANTRR.png" />
+    <Content Include="Assets\can\CANTRS.png" />
+    <Content Include="Assets\can\CANTSC.png" />
+    <Content Include="Assets\can\MOTO.png" />
+    <Content Include="Assets\can\MOTS.png" />
+    <Content Include="Assets\can\MSGCTRL.png" />
+    <Content Include="Assets\can\MSGID.png" />
+    <Content Include="Assets\cputimer\TIMERxPRD.png" />
+    <Content Include="Assets\cputimer\TIMERxTCR.png" />
+    <Content Include="Assets\cputimer\TIMERxTIM.png" />
+    <Content Include="Assets\cputimer\TIMERxTPR.png" />
+    <Content Include="Assets\dma\BURST_COUNT.png" />
+    <Content Include="Assets\dma\BURST_SIZE.png" />
+    <Content Include="Assets\dma\CONTROL.png" />
+    <Content Include="Assets\dma\DEBUGCTRL.png" />
+    <Content Include="Assets\dma\DMACTRL.png" />
+    <Content Include="Assets\dma\DST_BURST_STEP.png" />
+    <Content Include="Assets\dma\DST_TRANSFER_STEP.png" />
+    <Content Include="Assets\dma\MODE.png" />
+    <Content Include="Assets\dma\PRIORITYCTRL1.png" />
+    <Content Include="Assets\dma\PRIORITYSTAT.png" />
+    <Content Include="Assets\dma\REVISION.png" />
+    <Content Include="Assets\dma\SRCDST_WRAP_COUNT.png" />
+    <Content Include="Assets\dma\SRCDST_WRAP_SIZE.png" />
+    <Content Include="Assets\dma\SRCDST_WRAP_STEP.png" />
+    <Content Include="Assets\dma\SRC_BURST_STEP.png" />
+    <Content Include="Assets\dma\SRC_TRANSFER_STEP.png" />
+    <Content Include="Assets\dma\TRANSFER_COUNT.png" />
+    <Content Include="Assets\dma\TRANSFER_SIZE.png" />
+    <Content Include="Assets\ecap\CAP1.png" />
+    <Content Include="Assets\ecap\CAP2.png" />
+    <Content Include="Assets\ecap\CAP3.png" />
+    <Content Include="Assets\ecap\CAP4.png" />
+    <Content Include="Assets\ecap\CTRPHS.png" />
+    <Content Include="Assets\ecap\ECCLR.png" />
+    <Content Include="Assets\ecap\ECCTL1.png" />
+    <Content Include="Assets\ecap\ECCTL2.png" />
+    <Content Include="Assets\ecap\ECEINT.png" />
+    <Content Include="Assets\ecap\ECFLG.png" />
+    <Content Include="Assets\ecap\ECFRC.png" />
+    <Content Include="Assets\ecap\TSCTR.png" />
+    <Content Include="Assets\epwm\AQCSFRC.png" />
+    <Content Include="Assets\epwm\AQCTLA.png" />
+    <Content Include="Assets\epwm\AQCTLB.png" />
+    <Content Include="Assets\epwm\AQSFRC.png" />
+    <Content Include="Assets\epwm\CMPA.png" />
+    <Content Include="Assets\epwm\CMPAHR.png" />
+    <Content Include="Assets\epwm\CMPB.png" />
+    <Content Include="Assets\epwm\CMPCTL.png" />
+    <Content Include="Assets\epwm\DBCTL.png" />
+    <Content Include="Assets\epwm\DBFED.png" />
+    <Content Include="Assets\epwm\DBRED.png" />
+    <Content Include="Assets\epwm\ETCLR.png" />
+    <Content Include="Assets\epwm\ETFLG.png" />
+    <Content Include="Assets\epwm\ETFRC.png" />
+    <Content Include="Assets\epwm\ETPS.png" />
+    <Content Include="Assets\epwm\ETSEL.png" />
+    <Content Include="Assets\epwm\HRCNFG.png" />
+    <Content Include="Assets\epwm\PCCTL.png" />
+    <Content Include="Assets\epwm\TBCTL.png" />
+    <Content Include="Assets\epwm\TBCTR.png" />
+    <Content Include="Assets\epwm\TBPHS.png" />
+    <Content Include="Assets\epwm\TBPHSHR.png" />
+    <Content Include="Assets\epwm\TBPRD.png" />
+    <Content Include="Assets\epwm\TBSTS.png" />
+    <Content Include="Assets\epwm\TZCLR.png" />
+    <Content Include="Assets\epwm\TZCTL.png" />
+    <Content Include="Assets\epwm\TZEINT.png" />
+    <Content Include="Assets\epwm\TZFLG.png" />
+    <Content Include="Assets\epwm\TZFRC.png" />
+    <Content Include="Assets\epwm\TZSEL.png" />
+    <Content Include="Assets\eqep\QCAPCTL.png" />
+    <Content Include="Assets\eqep\QCLR.png" />
+    <Content Include="Assets\eqep\QCPRD.png" />
+    <Content Include="Assets\eqep\QCPRDLAT.png" />
+    <Content Include="Assets\eqep\QCTMR.png" />
+    <Content Include="Assets\eqep\QCTMRLAT.png" />
+    <Content Include="Assets\eqep\QDECCTL.png" />
+    <Content Include="Assets\eqep\QEINT.png" />
+    <Content Include="Assets\eqep\QEPCTL.png" />
+    <Content Include="Assets\eqep\QEPSTS.png" />
+    <Content Include="Assets\eqep\QFLG.png" />
+    <Content Include="Assets\eqep\QFRC.png" />
+    <Content Include="Assets\eqep\QPOSCMP.png" />
+    <Content Include="Assets\eqep\QPOSCNT.png" />
+    <Content Include="Assets\eqep\QPOSCTL.png" />
+    <Content Include="Assets\eqep\QPOSILAT.png" />
+    <Content Include="Assets\eqep\QPOSINIT.png" />
+    <Content Include="Assets\eqep\QPOSLAT.png" />
+    <Content Include="Assets\eqep\QPOSMAX.png" />
+    <Content Include="Assets\eqep\QPOSSLAT.png" />
+    <Content Include="Assets\eqep\QUPRD.png" />
+    <Content Include="Assets\eqep\QUTMR.png" />
+    <Content Include="Assets\eqep\QWDPRD.png" />
+    <Content Include="Assets\eqep\QWDTMR.png" />
+    <Content Include="Assets\gpio\GPACTRL.png" />
+    <Content Include="Assets\gpio\GPADAT.png" />
+    <Content Include="Assets\gpio\GPADIR.png" />
+    <Content Include="Assets\gpio\GPAMUX1.png" />
+    <Content Include="Assets\gpio\GPAMUX2.png" />
+    <Content Include="Assets\gpio\GPAPUD.png" />
+    <Content Include="Assets\gpio\GPAQSEL1.png" />
+    <Content Include="Assets\gpio\GPAQSEL2.png" />
+    <Content Include="Assets\gpio\GPASET.png" />
+    <Content Include="Assets\gpio\GPBCTRL.png" />
+    <Content Include="Assets\gpio\GPBDAT.png" />
+    <Content Include="Assets\gpio\GPBDIR.png" />
+    <Content Include="Assets\gpio\GPBMUX1.png" />
+    <Content Include="Assets\gpio\GPBMUX2.png" />
+    <Content Include="Assets\gpio\GPBPUD.png" />
+    <Content Include="Assets\gpio\GPBQSEL1.png" />
+    <Content Include="Assets\gpio\GPBQSEL2.png" />
+    <Content Include="Assets\gpio\GPBSET.png" />
+    <Content Include="Assets\gpio\GPCDAT.png" />
+    <Content Include="Assets\gpio\GPCDIR.png" />
+    <Content Include="Assets\gpio\GPCMUX1.png" />
+    <Content Include="Assets\gpio\GPCMUX2.png" />
+    <Content Include="Assets\gpio\GPCPUD.png" />
+    <Content Include="Assets\gpio\GPCSET.png" />
+    <Content Include="Assets\gpio\GPIOLPMSEL.png" />
+    <Content Include="Assets\gpio\GPIOXINTnSEL.png" />
+    <Content Include="Assets\gpio\GPIOXNMISEL.png" />
+    <Content Include="Assets\i2c\I2CCNT.png" />
+    <Content Include="Assets\i2c\I2CDRR.png" />
+    <Content Include="Assets\i2c\I2CDXR.png" />
+    <Content Include="Assets\i2c\I2CEMDR.png" />
+    <Content Include="Assets\i2c\I2CFFRX.png" />
+    <Content Include="Assets\i2c\I2CFFTX.png" />
+    <Content Include="Assets\i2c\I2CIER.png" />
+    <Content Include="Assets\i2c\I2CISRC.png" />
+    <Content Include="Assets\i2c\I2CMDR.png" />
+    <Content Include="Assets\i2c\I2COAR.png" />
+    <Content Include="Assets\i2c\I2CPSC.png" />
+    <Content Include="Assets\i2c\I2CSAR.png" />
+    <Content Include="Assets\i2c\I2CSTR.png" />
+    <Content Include="Assets\mcbsp\DRR.png" />
+    <Content Include="Assets\mcbsp\DXR.png" />
+    <Content Include="Assets\mcbsp\MCR1.png" />
+    <Content Include="Assets\mcbsp\MCR2.png" />
+    <Content Include="Assets\mcbsp\MFFCT.png" />
+    <Content Include="Assets\mcbsp\MFFINT.png" />
+    <Content Include="Assets\mcbsp\MFFRX.png" />
+    <Content Include="Assets\mcbsp\MFFST.png" />
+    <Content Include="Assets\mcbsp\MFFTX.png" />
+    <Content Include="Assets\mcbsp\PCR.png" />
+    <Content Include="Assets\mcbsp\RCER.png" />
+    <Content Include="Assets\mcbsp\RCR1.png" />
+    <Content Include="Assets\mcbsp\RCR2.png" />
+    <Content Include="Assets\mcbsp\SPCR1.png" />
+    <Content Include="Assets\mcbsp\SPCR2.png" />
+    <Content Include="Assets\mcbsp\SRGR1.png" />
+    <Content Include="Assets\mcbsp\SRGR2.png" />
+    <Content Include="Assets\mcbsp\XCER.png" />
+    <Content Include="Assets\mcbsp\XCR1.png" />
+    <Content Include="Assets\mcbsp\XCR2.png" />
+    <Content Include="Assets\pie\PIEACK.png" />
+    <Content Include="Assets\pie\PIECTRL.png" />
+    <Content Include="Assets\pie\PIEIER.png" />
+    <Content Include="Assets\pie\PIEIFR.png" />
+    <Content Include="Assets\sci\SCIBAUD.png" />
+    <Content Include="Assets\sci\SCICCR.png" />
+    <Content Include="Assets\sci\SCICTL1.png" />
+    <Content Include="Assets\sci\SCICTL2.png" />
+    <Content Include="Assets\sci\SCIFFCT.png" />
+    <Content Include="Assets\sci\SCIFFRX.png" />
+    <Content Include="Assets\sci\SCIFFTX.png" />
+    <Content Include="Assets\sci\SCIPRI.png" />
+    <Content Include="Assets\sci\SCIRXBUF.png" />
+    <Content Include="Assets\sci\SCIRXEMU.png" />
+    <Content Include="Assets\sci\SCIRXST.png" />
+    <Content Include="Assets\sci\SCITXBUF.png" />
+    <Content Include="Assets\spi\SPIBRR.png" />
+    <Content Include="Assets\spi\SPICCR.png" />
+    <Content Include="Assets\spi\SPICTL.png" />
+    <Content Include="Assets\spi\SPIDAT.png" />
+    <Content Include="Assets\spi\SPIFFCT.png" />
+    <Content Include="Assets\spi\SPIFFRX.png" />
+    <Content Include="Assets\spi\SPIFFTX.png" />
+    <Content Include="Assets\spi\SPIPRI.png" />
+    <Content Include="Assets\spi\SPIRXBUF.png" />
+    <Content Include="Assets\spi\SPIRXEMU.png" />
+    <Content Include="Assets\spi\SPISTS.png" />
+    <Content Include="Assets\spi\SPITXBUF.png" />
+    <Content Include="Assets\sysctrl\HISPCP.png" />
+    <Content Include="Assets\sysctrl\LOSPCP.png" />
+    <Content Include="Assets\sysctrl\LPMCR0.png" />
+    <Content Include="Assets\sysctrl\PCLKCR0.png" />
+    <Content Include="Assets\sysctrl\PCLKCR1.png" />
+    <Content Include="Assets\sysctrl\PCLKCR3.png" />
+    <Content Include="Assets\sysctrl\PLLCR.png" />
+    <Content Include="Assets\sysctrl\PLLSTS.png" />
+    <Content Include="Assets\sysctrl\SCSR.png" />
+    <Content Include="Assets\sysctrl\WDCNTR.png" />
+    <Content Include="Assets\sysctrl\WDCR.png" />
+    <Content Include="Assets\sysctrl\WDKEY.png" />
+    <Content Include="Assets\xintf\XBANK.png" />
+    <Content Include="Assets\xintf\XINTCNF2.png" />
+    <Content Include="Assets\xintf\XRESET.png" />
+    <Content Include="Assets\xintf\XREVISION.png" />
+    <Content Include="Assets\xintf\XTIMING.png" />
+    <Content Include="Properties\Default.rd.xml" />
+    <Content Include="Assets\LockScreenLogo.scale-200.png" />
+    <Content Include="Assets\SplashScreen.scale-200.png" />
+    <Content Include="Assets\Square150x150Logo.scale-200.png" />
+    <Content Include="Assets\Square44x44Logo.scale-200.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
+    <Content Include="Assets\StoreLogo.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-200.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="MainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
+      <Version>6.1.5</Version>
+    </PackageReference>
+  </ItemGroup>
+  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
+    <VisualStudioVersion>14.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
