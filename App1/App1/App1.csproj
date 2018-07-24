@@ -124,6 +124,8 @@
     <Content Include="Assets\can\CANES.png" />
     <Content Include="Assets\can\CANGAM.png" />
     <Content Include="Assets\can\CANGIF.png" />
+    <Content Include="Assets\can\CANGIF0.png" />
+    <Content Include="Assets\can\CANGIF1.png" />
     <Content Include="Assets\can\CANGIM.png" />
     <Content Include="Assets\can\CANMC.png" />
     <Content Include="Assets\can\CANMD.png" />
@@ -131,11 +133,13 @@
     <Content Include="Assets\can\CANMIL.png" />
     <Content Include="Assets\can\CANMIM.png" />
     <Content Include="Assets\can\CANOPC.png" />
+    <Content Include="Assets\can\CANREC.png" />
     <Content Include="Assets\can\CANRFP.png" />
     <Content Include="Assets\can\CANRIOC.png" />
     <Content Include="Assets\can\CANRML.png" />
     <Content Include="Assets\can\CANRMP.png" />
     <Content Include="Assets\can\CANTA.png" />
+    <Content Include="Assets\can\CANTEC.png" />
     <Content Include="Assets\can\CANTECREC.png" />
     <Content Include="Assets\can\CANTIOC.png" />
     <Content Include="Assets\can\CANTOC.png" />

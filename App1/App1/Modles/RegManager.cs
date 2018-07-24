@@ -124,6 +124,16 @@ namespace App1.Modles
                 regs.Add(new Regs(item, RegCategoly.SPI));
             }
 
+            string[] list_CAN = { "MSGCTRL", "MSGID","CANME","CANMD","CANTRS","CANTRR",
+                                "CANTA","CANAA","CANRMP","CANRML",
+                                "CANRFP","CANGAM","CANMC","CANBTC",
+                                "CANES","CANTEC","CANREC","CANGIF0",
+                                "CANGIF1","CANGIM","CANMIM","CANMIL","CANOPC","CANTIOC",
+                                "CANRIOC","CANTSC","MOTS","MOTO","CANTOC","CANTOS"};
+            foreach (var item in list_CAN)
+            {
+                regs.Add(new Regs(item, RegCategoly.CAN));
+            }
 
             regs.Add(new Regs("TIMERxTIM", RegCategoly.CPUTimer));
             regs.Add(new Regs("TIMERxTIM", RegCategoly.CPUTimer));
