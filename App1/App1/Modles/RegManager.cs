@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -135,30 +136,48 @@ namespace App1.Modles
                 regs.Add(new Regs(item, RegCategoly.CAN));
             }
 
-            regs.Add(new Regs("TIMERxTIM", RegCategoly.CPUTimer));
-            regs.Add(new Regs("TIMERxTIM", RegCategoly.CPUTimer));
-            regs.Add(new Regs("TIMERxTIM", RegCategoly.CPUTimer));
-            regs.Add(new Regs("TIMERxTIM", RegCategoly.CPUTimer));
-            regs.Add(new Regs("TIMERxTIM", RegCategoly.CPUTimer));
-            regs.Add(new Regs("TIMERxTIM", RegCategoly.CPUTimer));
-            regs.Add(new Regs("TIMERxTIM", RegCategoly.CPUTimer));
-            regs.Add(new Regs("TIMERxTIM", RegCategoly.CPUTimer));
-            regs.Add(new Regs("TIMERxTIM", RegCategoly.CPUTimer));
-            regs.Add(new Regs("TIMERxTIM", RegCategoly.CPUTimer));
-            regs.Add(new Regs("TIMERxTIM", RegCategoly.CPUTimer));
-            regs.Add(new Regs("TIMERxTIM", RegCategoly.CPUTimer));
-            regs.Add(new Regs("TIMERxTIM", RegCategoly.CPUTimer));
-            regs.Add(new Regs("TIMERxTIM", RegCategoly.CPUTimer));
+            string[] list_McBsp = { "MFFTX", "MFFRX","MFFCT","MFFINT","MFFST","DDR",
+                                "DXR","SPCR1",
+                                "SPCR2","PCR","RCR1","RCR2",
+                                "XCR1","XCR2","SRGR1","SRGR2",
+                                "MCR1","MCR2","RCERx","XCERx"};
+            foreach (var item in list_McBsp)
+            {
+                regs.Add(new Regs(item, RegCategoly.McBSP));
+            }
+
+            string[] list_XINTF = { "XTIMINGn", "XINTCNF2","XBANK","XREVISION","XRESET"};
+            foreach (var item in list_XINTF)
+            {
+                regs.Add(new Regs(item, RegCategoly.XINTF));
+            }
+
+            string[] list_DMA = { "DMACTRL", "DEBUGCTRL", "REVISION", "PRIORITYCTRL1", "PRIORITYSTAT",
+                                "MODE", "CONTROL", "BURST_SIZE", "BURST_COUNT", "SRC_BURST_STEP",
+                                "DST_BURST_STEP", "TRANSFER_SIZE", "TRANSFER_COUNT", "SRC_TRANSFER_STEP", "DST_TRANSFER_STEP",
+                                "SRCDST_WRAP_SIZE", "SRCDST_WRAP_COUNT", "SRCDST_WRAP_STEP"};
+            foreach (var item in list_DMA)
+            {
+                regs.Add(new Regs(item, RegCategoly.DMA));
+            }
+
+            string[] list_I2C = { "I2CMDR", "I2CEMDR", "I2CIER", "I2CSTR", "I2CISRC",
+                                "I2CPSC", "I2CCLKL", "I2CCLKH", "I2CSAR", "I2COAR",
+                                "I2CCNT", "I2CDRR", "I2CDXR", "I2CFFTX", "I2CFFRX"};
+            foreach (var item in list_I2C)
+            {
+                regs.Add(new Regs(item, RegCategoly.I2C));
+            }
 
 
-            return sounds;
+            return regs;
         }
 
-        public static void GetAllSounds(ObservableCollection<SoundsItem> sounds)
+        public static void GetAllRegs(ObservableCollection<Regs> regs)
         {
-            var allsounds = GetSounds();
-            sounds.Clear();
-            allsounds.ForEach(p => sounds.Add(p));
+            var allregs = GetRegs();
+            regs.Clear();
+            allregs.ForEach(p => regs.Add(p));
         }
     }
 }
