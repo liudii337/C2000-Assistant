@@ -17,7 +17,7 @@ namespace App1.Modles
             Name = name;
             Categoly = categoly;
             //名字最后一个若为H的话，说明其为高位，应考虑到这种情况
-            if (name[name.Length - 1] == 'H')
+            if (name[name.Length - 1] == 'H'&&categoly==RegCategoly.CPUTimer)
             { name = name.Substring(0, name.Length - 1); }
             ImageFile = string.Format("ms-appx:///Assets/{0}/{1}.png", categoly.ToString().ToLower(), name);
         }
@@ -27,7 +27,7 @@ namespace App1.Modles
             Name = name;
             Categoly = categoly;
             //名字最后一个若为H的话，说明其为高位，应考虑到这种情况
-            if (name[name.Length - 1] == 'H')
+            if (name[name.Length - 1] == 'H' && categoly == RegCategoly.CPUTimer)
             { name.TrimEnd('H'); }
             ImageFile = string.Format("ms-appx:///Assets/{0}/{1}.png", categoly.ToString().ToLower(), sub_name);
         }

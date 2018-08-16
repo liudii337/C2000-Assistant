@@ -299,6 +299,7 @@
     <Content Include="Assets\mcbsp\XCER.png" />
     <Content Include="Assets\mcbsp\XCR1.png" />
     <Content Include="Assets\mcbsp\XCR2.png" />
+    <Content Include="Assets\NoResult.png" />
     <Content Include="Assets\pie\PIEACK.png" />
     <Content Include="Assets\pie\PIECTRL.png" />
     <Content Include="Assets\pie\PIEIER.png" />

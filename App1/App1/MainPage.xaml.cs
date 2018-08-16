@@ -26,7 +26,10 @@ namespace App1
     public sealed partial class MainPage : Page
     {
         private ObservableCollection<Regs> AllRegs;
+        private List<Regs> RegSuggestions;
+        private bool chang_enable { get; set; }
         public CollectionViewSource collectionRegs { get; set; }
+
 
         public MainPage()
         {
@@ -47,12 +50,53 @@ namespace App1
             collectionRegs.Source = temp;
             this.gridView1.ItemsSource = collectionRegs.View.CollectionGroups;
             this.gridView2.ItemsSource = collectionRegs.View;
+
+            imagebox.Source = new BitmapImage(new Uri(AllRegs[0].ImageFile));
         }
 
         private void gridView2_ItemClick(object sender, ItemClickEventArgs e)
         {
             var item = (Regs)e.ClickedItem;
             imagebox.Source = new BitmapImage(new Uri(item.ImageFile));
+        }
+
+        private void gridView2_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(chang_enable)
+            {
+                var item = (Regs)gridView2.SelectedItem;
+                imagebox.Source = new BitmapImage(new Uri(item.ImageFile));
+            }
+        }
+
+        private void SearchAutoSuggestBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
+        {
+            chang_enable = false;
+
+            RegSuggestions = AllRegs
+                .Where(p => p.Name.StartsWith(sender.Text.ToUpper())).ToList();
+            //SearchAutoSuggestBox.ItemsSource = RegSuggestions;
+
+            Func<RegCategoly, string> SwitchCategoly = (time) =>
+            {
+                return time.ToString();
+            };
+
+            var temp = from t in RegSuggestions
+                       orderby t.Categoly
+                       group t by SwitchCategoly(t.Categoly);
+            collectionRegs = new CollectionViewSource();
+            collectionRegs.IsSourceGrouped = true;
+            collectionRegs.Source = temp;
+            this.gridView1.ItemsSource = collectionRegs.View.CollectionGroups;
+            this.gridView2.ItemsSource = collectionRegs.View;
+
+            if(RegSuggestions.Count()!=0)
+            { imagebox.Source = new BitmapImage(new Uri(RegSuggestions[0].ImageFile)); }
+            else
+            { imagebox.Source = new BitmapImage(new Uri("ms-appx:///Assets/NoResult.png")); }
+
+            chang_enable = true;
         }
     }
 }

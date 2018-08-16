@@ -180,10 +180,10 @@ namespace App1.Modles
             allregs.ForEach(p => regs.Add(p));
         }
 
-        public static void GetRegByCategory(ObservableCollection<Regs> regs,RegCategoly regCategoly)
+        public static void GetRegByName(ObservableCollection<Regs> regs,string name)
         {
             var allregs = GetRegs();
-            var fillteredRegs = allregs.Where(p => p.Categoly == regCategoly).ToList();
+            var fillteredRegs = allregs.Where(p => p.Name == name).ToList();
             regs.Clear();
             fillteredRegs.ForEach(p => regs.Add(p));
         }

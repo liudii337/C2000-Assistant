@@ -8,79 +8,97 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
+    <Grid Background="{StaticResource SystemControlAcrylicWindowBrush}">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="220"/>
+            <ColumnDefinition Width="300"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <SemanticZoom x:Name="semanticzoom" Grid.Column="0" 
-                      VerticalAlignment="Center" 
-                      HorizontalAlignment="Left" 
-                      Width="220"
-                      BorderThickness="0,0,3,0"
+        <Grid Grid.Column="0" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <AutoSuggestBox Name="SearchAutoSuggestBox"
+                            Grid.Row="0"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                            PlaceholderText="Search for Regs"
+                            Width="240"
+                            Margin="0,20,0,0"
+                            QueryIcon="Find"
+                            TextChanged="SearchAutoSuggestBox_TextChanged">
+            </AutoSuggestBox>
+            <SemanticZoom x:Name="semanticzoom"
+                      Grid.Row="1"
+                      VerticalAlignment="Top" 
+                      Margin="20,0,0,0"
+                      HorizontalAlignment="Stretch" 
                       HorizontalContentAlignment="Stretch">
-            <SemanticZoom.ZoomedOutView>
-                <ListView Name="gridView1" 
+                <SemanticZoom.ZoomedOutView>
+                    <ListView Name="gridView1" 
                           HorizontalAlignment="Stretch"
                           VerticalAlignment="Center">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding Group.Key}" 
-                                       Foreground="{StaticResource ApplicationForegroundThemeBrush}" 
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Group.Key}" 
+                                       Foreground="{StaticResource SystemControlBackgroundAccentBrush}" 
                                        Margin="10" 
-                                       FontSize="15"
+                                       FontSize="18"
                                        FontWeight="Bold" />
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </SemanticZoom.ZoomedOutView>
-            <SemanticZoom.ZoomedInView>
-                <ListView x:Name="gridView2" 
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </SemanticZoom.ZoomedOutView>
+                <SemanticZoom.ZoomedInView>
+                    <ListView x:Name="gridView2" 
                           HorizontalAlignment="Stretch" 
                           ShowsScrollingPlaceholders="True"
                           VerticalAlignment="Center" 
                           IsItemClickEnabled="True"
-                          ItemClick="gridView2_ItemClick">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal" 
-                                        Margin="12" 
-                                        HorizontalAlignment="Left">
-                                <TextBlock Text="{Binding Name}" 
+                          ItemClick="gridView2_ItemClick"
+                          SelectionChanged="gridView2_SelectionChanged" IsZoomedInView="False">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid HorizontalAlignment="Left" >
+                                    <TextBlock Text="{Binding Name}" 
                                            TextWrapping="Wrap" 
-                                           Foreground="Black"  
+                                           Foreground="Black" 
                                            FontSize="15" />
-                            </StackPanel>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                    <ListView.ItemContainerStyle>
-                        <Style TargetType="ListViewItem">
-                            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-                            <Setter Property="Margin" Value="0"/>
-                        </Style>
-                    </ListView.ItemContainerStyle>
-                    <ListView.GroupStyle>
-                        <GroupStyle>
-                            <GroupStyle.HeaderTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="{Binding Key}" 
-                                               Foreground="{StaticResource ApplicationForegroundThemeBrush}" 
+                                </Grid>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                <Setter Property="Margin" Value="0"/>
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                        <ListView.GroupStyle>
+                            <GroupStyle>
+                                <GroupStyle.HeaderTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <TextBlock Text="{Binding Key}" 
+                                               Foreground="{StaticResource SystemControlBackgroundAccentBrush}" 
                                                HorizontalAlignment="Stretch"
-                                               Margin="10" 
-                                               FontSize="30"  
-                                               FontWeight="ExtraBold" />
-                                </DataTemplate>
-                            </GroupStyle.HeaderTemplate>
-                        </GroupStyle>
-                    </ListView.GroupStyle>
-                </ListView>
-            </SemanticZoom.ZoomedInView>
-        </SemanticZoom>
+                                               Margin="0" 
+                                               FontSize="18"  
+                                               FontWeight="Bold" />
+                                        </Grid>
+                                    </DataTemplate>
+                                </GroupStyle.HeaderTemplate>
+                            </GroupStyle>
+                        </ListView.GroupStyle>
+                    </ListView>
+                </SemanticZoom.ZoomedInView>
+            </SemanticZoom>
+        </Grid>
+        
         <ScrollViewer Grid.Column="1" 
-                      Margin="0,10,0,10"
+                      Background="White"
                       VerticalScrollBarVisibility="Auto" 
                       HorizontalScrollBarVisibility="Auto">
-            <Image x:Name="imagebox" Stretch="None" />
+            <Image x:Name="imagebox" Stretch="None" Margin="0,10,0,10"/>
         </ScrollViewer>
     </Grid>
 </Page>
