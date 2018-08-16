@@ -19,7 +19,7 @@ namespace App1.Modles
             //名字最后一个若为H的话，说明其为高位，应考虑到这种情况
             if (name[name.Length - 1] == 'H')
             {  name.TrimEnd('H');}
-            ImageFile = string.Format("/Assets/{0}/{1}.png", categoly.ToString().ToLower(), name);
+            ImageFile = string.Format("ms-appx:///Assets/{0}/{1}.png", categoly.ToString().ToLower(), name);
         }
 
         public Regs(string name, RegCategoly categoly, string sub_name)
@@ -29,7 +29,7 @@ namespace App1.Modles
             //名字最后一个若为H的话，说明其为高位，应考虑到这种情况
             if (name[name.Length - 1] == 'H')
             { name.TrimEnd('H'); }
-            ImageFile = string.Format("/Assets/{0}/{1}.png", categoly.ToString().ToLower(), sub_name);
+            ImageFile = string.Format("ms-appx:///Assets/{0}/{1}.png", categoly.ToString().ToLower(), sub_name);
         }
     }
 

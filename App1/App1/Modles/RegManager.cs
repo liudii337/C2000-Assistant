@@ -179,5 +179,13 @@ namespace App1.Modles
             regs.Clear();
             allregs.ForEach(p => regs.Add(p));
         }
+
+        public static void GetRegByCategory(ObservableCollection<Regs> regs,RegCategoly regCategoly)
+        {
+            var allregs = GetRegs();
+            var fillteredRegs = allregs.Where(p => p.Categoly == regCategoly).ToList();
+            regs.Clear();
+            fillteredRegs.ForEach(p => regs.Add(p));
+        }
     }
 }
