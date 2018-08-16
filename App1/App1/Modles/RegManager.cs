@@ -90,9 +90,9 @@ namespace App1.Modles
             {
                 regs.Add(new Regs(item, RegCategoly.eCAP));
             }
-            regs.Add(new Regs("TIMERxTIM", RegCategoly.PIE));
 
-            string[] list_eQEP = { "QEDCCTL", "QEPCTL","QPOSCTL","QCAPCTL","QPOSCNT","QPOSINIT",
+
+            string[] list_eQEP = { "QDECCTL", "QEPCTL","QPOSCTL","QCAPCTL","QPOSCNT","QPOSINIT",
                                 "QPOSMAX","QPOSCMP","QPOSILAT","QPOSSLAT",
                                 "QPOSLAT","QUTMR","QUPRD","QWDTMR",
                                 "QWDPRD","QEINT","QFLG","QCLR",
@@ -136,17 +136,17 @@ namespace App1.Modles
                 regs.Add(new Regs(item, RegCategoly.CAN));
             }
 
-            string[] list_McBsp = { "MFFTX", "MFFRX","MFFCT","MFFINT","MFFST","DDR",
+            string[] list_McBsp = { "MFFTX", "MFFRX","MFFCT","MFFINT","MFFST","DRR",
                                 "DXR","SPCR1",
                                 "SPCR2","PCR","RCR1","RCR2",
                                 "XCR1","XCR2","SRGR1","SRGR2",
-                                "MCR1","MCR2","RCERx","XCERx"};
+                                "MCR1","MCR2","RCER","XCER"};
             foreach (var item in list_McBsp)
             {
                 regs.Add(new Regs(item, RegCategoly.McBSP));
             }
 
-            string[] list_XINTF = { "XTIMINGn", "XINTCNF2","XBANK","XREVISION","XRESET"};
+            string[] list_XINTF = { "XTIMING", "XINTCNF2","XBANK","XREVISION","XRESET"};
             foreach (var item in list_XINTF)
             {
                 regs.Add(new Regs(item, RegCategoly.XINTF));

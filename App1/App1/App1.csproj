@@ -264,6 +264,8 @@
     <Content Include="Assets\gpio\GPIOLPMSEL.png" />
     <Content Include="Assets\gpio\GPIOXINTnSEL.png" />
     <Content Include="Assets\gpio\GPIOXNMISEL.png" />
+    <Content Include="Assets\i2c\I2CCLKH.png" />
+    <Content Include="Assets\i2c\I2CCLKL.png" />
     <Content Include="Assets\i2c\I2CCNT.png" />
     <Content Include="Assets\i2c\I2CDRR.png" />
     <Content Include="Assets\i2c\I2CDXR.png" />

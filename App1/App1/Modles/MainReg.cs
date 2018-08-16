@@ -18,7 +18,7 @@ namespace App1.Modles
             Categoly = categoly;
             //名字最后一个若为H的话，说明其为高位，应考虑到这种情况
             if (name[name.Length - 1] == 'H')
-            {  name.TrimEnd('H');}
+            { name = name.Substring(0, name.Length - 1); }
             ImageFile = string.Format("ms-appx:///Assets/{0}/{1}.png", categoly.ToString().ToLower(), name);
         }
 
