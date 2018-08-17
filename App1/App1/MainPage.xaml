@@ -43,10 +43,16 @@
                                 <TextBlock Text="{Binding Group.Key}" 
                                        Foreground="{StaticResource SystemControlBackgroundAccentBrush}" 
                                        Margin="10" 
-                                       FontSize="18"
+                                       FontSize="16"
                                        FontWeight="Bold" />
                             </DataTemplate>
                         </ListView.ItemTemplate>
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="Margin" Value="0"/>
+                                <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                            </Style>
+                        </ListView.ItemContainerStyle>
                     </ListView>
                 </SemanticZoom.ZoomedOutView>
                 <SemanticZoom.ZoomedInView>
@@ -59,11 +65,11 @@
                           SelectionChanged="gridView2_SelectionChanged" IsZoomedInView="False">
                         <ListView.ItemTemplate>
                             <DataTemplate>
-                                <Grid HorizontalAlignment="Left" >
+                                <Grid >
                                     <TextBlock Text="{Binding Name}" 
                                            TextWrapping="Wrap" 
                                            Foreground="Black" 
-                                           FontSize="15" />
+                                           FontSize="16" />
                                 </Grid>
                             </DataTemplate>
                         </ListView.ItemTemplate>
