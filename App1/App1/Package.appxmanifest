@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
-  <Identity Name="248a7d49-0ae2-4f22-a830-6987cc28ee5b" Publisher="CN=liudi" Version="1.0.0.0" />
-  <mp:PhoneIdentity PhoneProductId="248a7d49-0ae2-4f22-a830-6987cc28ee5b" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
+  <Identity Name="14286XL.F28335" Publisher="CN=D9C34D25-DB83-4D90-BC9D-2C03D91F65B3" Version="1.1.2.0" />
+  <mp:PhoneIdentity PhoneProductId="8fc77916-21c4-4afd-829a-c004337b7593" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
-    <DisplayName>App1</DisplayName>
-    <PublisherDisplayName>liudi</PublisherDisplayName>
+    <DisplayName>F28335</DisplayName>
+    <PublisherDisplayName>X·L</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
   <Dependencies>
