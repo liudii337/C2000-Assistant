@@ -34,6 +34,9 @@ namespace App1
         public MainPage()
         {
             this.InitializeComponent();
+
+            SetTheme();
+
             AllRegs = new ObservableCollection<Regs>();
             RegManager.GetAllRegs(AllRegs);
 
@@ -98,5 +101,55 @@ namespace App1
 
             chang_enable = true;
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (RequestedTheme == ElementTheme.Light)
+            {
+                RequestedTheme = ElementTheme.Dark;
+                InvertBorder.Visibility = Visibility.Visible;
+                ThemeIcon.Glyph = "\uE708;";
+            }
+            else
+            {
+                RequestedTheme = ElementTheme.Light;
+                InvertBorder.Visibility = Visibility.Collapsed;
+                ThemeIcon.Glyph = "\uE706;";
+            }
+        }
+
+        private void SetTheme()
+        {
+            //Check Theme
+            if(IsLightTheme())
+            {
+                ThemeIcon.Glyph = "\uE706;";
+                InvertBorder.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                ThemeIcon.Glyph = "\uE708;";
+                InvertBorder.Visibility = Visibility.Visible;
+            }
+        }
+
+
+        private bool IsLightTheme()
+        {
+            //get system current theme color, not the app theme
+            var DefaultTheme = new Windows.UI.ViewManagement.UISettings();
+            var uiTheme = DefaultTheme.GetColorValue(Windows.UI.ViewManagement.UIColorType.Background).ToString();
+            if (uiTheme == "#FF000000")
+            {
+                RequestedTheme = ElementTheme.Dark;
+                return false;
+            }
+            else
+            {
+                RequestedTheme = ElementTheme.Light;
+                return true;
+            }
+        }
+
     }
 }

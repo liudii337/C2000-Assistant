@@ -5,6 +5,7 @@
     xmlns:local="using:App1"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:media="using:Microsoft.Toolkit.Uwp.UI.Media"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
@@ -13,21 +14,38 @@
             <ColumnDefinition Width="300"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Grid Grid.Column="0" Background="{StaticResource AppBarBackgroundThemeBrush}">
+        <Grid Grid.Column="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="80"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <AutoSuggestBox Name="SearchAutoSuggestBox"
+            <Grid Grid.Row="0" Margin="20,20,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <AutoSuggestBox Name="SearchAutoSuggestBox"
                             Grid.Row="0"
                             VerticalAlignment="Center"
-                            HorizontalAlignment="Center"
+                            HorizontalAlignment="Stretch"
                             PlaceholderText="Search for Regs"
-                            Width="240"
-                            Margin="0,20,0,0"
                             QueryIcon="Find"
                             TextChanged="SearchAutoSuggestBox_TextChanged">
-            </AutoSuggestBox>
+                </AutoSuggestBox>
+                <Button Grid.Column="1" 
+                        Width="40" 
+                        Height="40" 
+                        VerticalAlignment="Center" 
+                        HorizontalAlignment="Center" 
+                        Background="Transparent"
+                        x:Name="ThemeButton"
+                        Click="Button_Click">
+                    <Button.Content>
+                        <FontIcon x:Name="ThemeIcon" FontFamily="Segoe MDL2 Assets" />
+                    </Button.Content>
+                </Button>
+            </Grid>
+            
             <SemanticZoom x:Name="semanticzoom"
                       Grid.Row="1"
                       VerticalAlignment="Top" 
@@ -68,7 +86,7 @@
                                 <Grid >
                                     <TextBlock Text="{Binding Name}" 
                                            TextWrapping="Wrap" 
-                                           Foreground="Black" 
+                                           
                                            FontSize="16" />
                                 </Grid>
                             </DataTemplate>
@@ -101,10 +119,16 @@
         </Grid>
         
         <ScrollViewer Grid.Column="1" 
-                      Background="White"
                       VerticalScrollBarVisibility="Auto" 
                       HorizontalScrollBarVisibility="Auto">
-            <Image x:Name="imagebox" Stretch="None" Margin="0,10,0,10"/>
+            <Grid Margin="0,10,0,10" Background="White">
+                <Image x:Name="imagebox" Stretch="None" />
+                <Border x:Name="InvertBorder" BorderBrush="Black">
+                    <Border.Background>
+                        <media:BackdropInvertBrush />
+                    </Border.Background>
+                </Border>
+            </Grid>
         </ScrollViewer>
     </Grid>
 </Page>
