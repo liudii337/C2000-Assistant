@@ -131,6 +131,7 @@ namespace App1
                 ThemeIcon.Glyph = "\uE708;";
                 InvertBorder.Visibility = Visibility.Visible;
             }
+            ViewIcon.Glyph = "\uE76B;";
         }
 
 
@@ -151,5 +152,18 @@ namespace App1
             }
         }
 
+        private void ViewChange_Click(object sender, RoutedEventArgs e)
+        {
+            if(SearchGrid.Visibility==Visibility.Visible)
+            {
+                SearchGrid.Visibility = Visibility.Collapsed;
+                ViewIcon.Glyph = "\uE76C;";
+            }
+            else
+            {
+                SearchGrid.Visibility = Visibility.Visible;
+                ViewIcon.Glyph = "\uE76B;";
+            }
+        }
     }
 }
