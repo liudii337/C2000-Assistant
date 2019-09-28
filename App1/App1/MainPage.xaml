@@ -94,13 +94,17 @@
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
+
+        <TextBlock Text="F28335" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20,12" Canvas.ZIndex="1" Grid.ColumnSpan="2"/>
+
         <Grid x:Name="SearchGrid" 
-              Grid.Column="0"  Width="300" Canvas.ZIndex="6">
+              Grid.Column="0"  Width="300" Background="{ThemeResource SystemControlAcrylicWindowBrush}">
             <Grid.RowDefinitions>
+                <RowDefinition Height="24"/>
                 <RowDefinition Height="80"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Grid Grid.Row="0" Margin="20,20,0,0" Canvas.ZIndex="-1">
+            <Grid Grid.Row="1" Margin="20,20,0,0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="5*"/>
                     <ColumnDefinition Width="*"/>
@@ -128,7 +132,7 @@
             </Grid>
             
             <SemanticZoom x:Name="semanticzoom"
-                      Grid.Row="1"
+                      Grid.Row="2"
                       VerticalAlignment="Top" 
                       Margin="20,0,0,0"
                       HorizontalAlignment="Stretch" 
@@ -165,9 +169,8 @@
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <Grid >
-                                    <TextBlock Text="{Binding Name}" 
+                                    <TextBlock x:Name="changcolorTextblock" Text="{Binding Name}" 
                                            TextWrapping="Wrap" 
-                                           
                                            FontSize="16" />
                                 </Grid>
                             </DataTemplate>
@@ -198,7 +201,7 @@
                 </SemanticZoom.ZoomedInView>
             </SemanticZoom>
 
-            <Grid Grid.Row="0" Grid.RowSpan="2">
+            <Grid Grid.Row="0" Grid.RowSpan="3">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="48"/>
@@ -211,13 +214,13 @@
         </Grid>
 
         <Grid Grid.Column="1">
-            <Button Style="{StaticResource ChangViewButtonStyle}" x:Name="ViewChange" Click="ViewChange_Click" Width="50" Height="50" Margin="-25,0,0,0">
+            <Button Style="{StaticResource ChangViewButtonStyle}" x:Name="ViewChange" Click="ViewChange_Click" Width="50" Height="50" Margin="-25,0,0,0" >
                 <Button.Content>
                     <FontIcon x:Name="ViewIcon"  FontFamily="Segoe MDL2 Assets" />
                 </Button.Content>
             </Button>
             <ScrollViewer
-                      VerticalScrollBarVisibility="Auto" 
+                      VerticalScrollBarVisibility="Auto" Margin="0,24,0,0"
                       HorizontalScrollBarVisibility="Auto" Canvas.ZIndex="-2">
                 <Grid Margin="0,10,0,10" Background="White">
                     <Image x:Name="imagebox" Stretch="None" />

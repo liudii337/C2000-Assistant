@@ -5,8 +5,12 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.ApplicationModel.Core;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Foundation.Metadata;
+using Windows.UI;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -27,6 +31,7 @@ namespace App1
     {
         private ObservableCollection<Regs> AllRegs;
         private List<Regs> RegSuggestions;
+        private Regs LastSelectedReg;
         private bool chang_enable { get; set; }
         public CollectionViewSource collectionRegs { get; set; }
 
@@ -34,6 +39,7 @@ namespace App1
         public MainPage()
         {
             this.InitializeComponent();
+            SetStatusBar();
 
             SetTheme();
 
@@ -55,19 +61,43 @@ namespace App1
             this.gridView2.ItemsSource = collectionRegs.View;
 
             imagebox.Source = new BitmapImage(new Uri(AllRegs[0].ImageFile));
+            LastSelectedReg = AllRegs[0];
         }
 
         private void gridView2_ItemClick(object sender, ItemClickEventArgs e)
         {
+
             var item = (Regs)e.ClickedItem;
+            if(item!=LastSelectedReg)
+            {
+                //SetSelectEffect(LastSelectedReg, false);
+                LastSelectedReg = item;
+            }
             imagebox.Source = new BitmapImage(new Uri(item.ImageFile));
+            //SetSelectEffect(item,true);
+        }
+
+        private void SetSelectEffect(Regs reg, bool b)
+        {
+            var ItemContainer = gridView2.ContainerFromItem(reg);
+            var selectedItem = ItemContainer as ListViewItem;
+
+            if (selectedItem != null)
+            {
+                var grid = selectedItem.ContentTemplateRoot as Grid;
+                var block = (TextBlock)VisualTreeHelper.GetChild(grid, 0);
+                block.Foreground = b ? new SolidColorBrush(Colors.Yellow) : (Application.Current.Resources["SystemColorWindowTextColor"] as SolidColorBrush);
+                //(IsLightTheme() ? new SolidColorBrush(Colors.Black) : new SolidColorBrush(Colors.White))
+            }
         }
 
         private void gridView2_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if(chang_enable)
             {
+                //SetSelectEffect(LastSelectedReg, false);
                 var item = (Regs)gridView2.SelectedItem;
+                LastSelectedReg = item;
                 imagebox.Source = new BitmapImage(new Uri(item.ImageFile));
             }
         }
@@ -104,24 +134,28 @@ namespace App1
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            var titleBar = ApplicationView.GetForCurrentView().TitleBar;
+
             if (RequestedTheme == ElementTheme.Light)
             {
                 RequestedTheme = ElementTheme.Dark;
                 InvertBorder.Visibility = Visibility.Visible;
                 ThemeIcon.Glyph = "\uE708;";
+                titleBar.ButtonForegroundColor = Colors.White;
             }
             else
             {
                 RequestedTheme = ElementTheme.Light;
                 InvertBorder.Visibility = Visibility.Collapsed;
                 ThemeIcon.Glyph = "\uE706;";
+                titleBar.ButtonForegroundColor = Colors.Black;
             }
         }
 
         private void SetTheme()
         {
             //Check Theme
-            if(IsLightTheme())
+            if (IsLightTheme())
             {
                 ThemeIcon.Glyph = "\uE706;";
                 InvertBorder.Visibility = Visibility.Collapsed;
@@ -133,6 +167,7 @@ namespace App1
             }
             ViewIcon.Glyph = "\uE76B;";
         }
+
 
 
         private bool IsLightTheme()
@@ -164,6 +199,27 @@ namespace App1
                 SearchGrid.Visibility = Visibility.Visible;
                 ViewIcon.Glyph = "\uE76B;";
             }
+        }
+
+        private void SetStatusBar()
+        {
+            if (ApiInformation.IsTypePresent("Windows.UI.ViewManagement.ApplicationView"))
+            {
+                var titleBar = ApplicationView.GetForCurrentView().TitleBar;
+                var coreTitleBar = CoreApplication.GetCurrentView().TitleBar;
+                if (titleBar != null)
+                {
+                    titleBar.ButtonBackgroundColor = Colors.Transparent;
+                    titleBar.BackgroundColor = Colors.Transparent;
+                    titleBar.InactiveBackgroundColor = Colors.Transparent;
+
+                    titleBar.ButtonForegroundColor = IsLightTheme()? Colors.Black: Colors.White;
+
+
+                    coreTitleBar.ExtendViewIntoTitleBar = true;
+                }
+            }
+
         }
     }
 }
