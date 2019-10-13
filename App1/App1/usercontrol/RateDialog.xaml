@@ -1,0 +1,34 @@
+﻿<UserControl
+    x:Class="App1.usercontrol.RateDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:App1.usercontrol"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Width="400"
+    Height="250"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+
+    <Grid Background="{ThemeResource SystemControlAcrylicElementBrush}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Foreground="{StaticResource SystemControlBackgroundAccentBrush}" FontWeight="Bold" FontSize="20" 
+                   Margin="12,12,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" HorizontalAlignment="Left" 
+                   Text="Do you like this app?"/>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.ColumnSpan="2" >
+            <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE00A;" Margin="3,0,3,0" VerticalAlignment="Bottom" FontSize="25" Foreground="{StaticResource SystemControlBackgroundAccentBrush}"/>
+            <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE00A;" Margin="3,0,3,0" VerticalAlignment="Bottom" FontSize="30" Foreground="{StaticResource SystemControlBackgroundAccentBrush}"/>
+            <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE00A;" Margin="3,0,3,0" VerticalAlignment="Bottom" FontSize="35" Foreground="{StaticResource SystemControlBackgroundAccentBrush}"/>
+            <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE00A;" Margin="3,0,3,0" VerticalAlignment="Bottom" FontSize="30" Foreground="{StaticResource SystemControlBackgroundAccentBrush}"/>
+            <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE00A;" Margin="3,0,3,0" VerticalAlignment="Bottom" FontSize="25" Foreground="{StaticResource SystemControlBackgroundAccentBrush}"/>
+        </StackPanel>
+        <Button x:Name="CancelButton" Content="No, Later" Click="CancelButton_Click"
+            Grid.Row="0" Grid.Column="0" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Margin="12"/>
+        <Button x:Name="RateButton" Content="Rate in Microsoft Store" Click="RateButton_Click"
+            Grid.Row="0" Grid.Column="2" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Margin="12"/>
+    </Grid>
+</UserControl>

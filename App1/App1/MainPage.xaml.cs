@@ -1,14 +1,19 @@
-﻿using App1.Modles;
+﻿using App1.ContentPopupEx;
+using App1.Modles;
+using App1.usercontrol;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
+using Windows.ApplicationModel;
 using Windows.ApplicationModel.Core;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Foundation.Metadata;
+using Windows.System;
 using Windows.UI;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
@@ -74,6 +79,8 @@ namespace App1
                 LastSelectedReg = item;
             }
             imagebox.Source = new BitmapImage(new Uri(item.ImageFile));
+
+
             //SetSelectEffect(item,true);
         }
 
@@ -150,6 +157,7 @@ namespace App1
                 ThemeIcon.Glyph = "\uE706;";
                 titleBar.ButtonForegroundColor = Colors.Black;
             }
+
         }
 
         private void SetTheme()
@@ -167,8 +175,6 @@ namespace App1
             }
             ViewIcon.Glyph = "\uE76B;";
         }
-
-
 
         private bool IsLightTheme()
         {
@@ -220,6 +226,15 @@ namespace App1
                 }
             }
 
+        }
+
+        private async void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (DateTime.Now.Day % 13 == 0)
+            {
+                var uc = new RateDialog();
+                await PopupService.Instance.ShowAsync(uc);
+            }
         }
     }
 }

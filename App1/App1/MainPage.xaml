@@ -3,11 +3,13 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:App1"
+    xmlns:attach="using:JP.Utils.Framework"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:media="using:Microsoft.Toolkit.Uwp.UI.Media"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    Loaded="Page_Loaded">
     <Page.Resources>
         <Style x:Key="ChangViewButtonStyle" TargetType="Button">
             <Setter Property="Background" Value="Transparent"/>
@@ -87,9 +89,10 @@
                 </Setter.Value>
             </Setter>
         </Style>
+
     </Page.Resources>
 
-    <Grid>
+    <Grid x:Name="RootGrid">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="*"/>
@@ -139,6 +142,7 @@
                       HorizontalContentAlignment="Stretch">
                 <SemanticZoom.ZoomedOutView>
                     <ListView Name="gridView1" 
+                          attach:ScrollViewerStyleChanger.Style="{StaticResource ScrollViewerCommonStyle}"
                           HorizontalAlignment="Stretch"
                           VerticalAlignment="Center">
                         <ListView.ItemTemplate>
@@ -165,6 +169,7 @@
                           VerticalAlignment="Center" 
                           IsItemClickEnabled="True"
                           ItemClick="gridView2_ItemClick"
+                          attach:ScrollViewerStyleChanger.Style="{StaticResource ScrollViewerCommonStyle}"
                           SelectionChanged="gridView2_SelectionChanged" IsZoomedInView="False">
                         <ListView.ItemTemplate>
                             <DataTemplate>
@@ -219,7 +224,7 @@
                     <FontIcon x:Name="ViewIcon"  FontFamily="Segoe MDL2 Assets" />
                 </Button.Content>
             </Button>
-            <ScrollViewer
+            <ScrollViewer Style="{StaticResource ScrollViewerCommonStyle}"
                       VerticalScrollBarVisibility="Auto" Margin="0,24,0,0"
                       HorizontalScrollBarVisibility="Auto" Canvas.ZIndex="-2">
                 <Grid Margin="0,10,0,10" Background="White">
