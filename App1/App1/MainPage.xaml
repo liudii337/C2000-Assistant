@@ -92,7 +92,7 @@
 
     </Page.Resources>
 
-    <Grid x:Name="RootGrid">
+    <Grid x:Name="RootGrid" SizeChanged="RootGrid_SizeChanged">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="*"/>
@@ -101,7 +101,7 @@
         <TextBlock Text="F28335" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20,12" Canvas.ZIndex="1" Grid.ColumnSpan="2"/>
 
         <Grid x:Name="SearchGrid" 
-              Grid.Column="0"  Width="300" Background="{ThemeResource SystemControlAcrylicWindowBrush}">
+              Grid.Column="0"  Width="260" Background="{ThemeResource SystemControlAcrylicWindowBrush}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="24"/>
                 <RowDefinition Height="80"/>
@@ -109,8 +109,8 @@
             </Grid.RowDefinitions>
             <Grid Grid.Row="1" Margin="20,20,0,0">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="5*"/>
                     <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="50"/>
                 </Grid.ColumnDefinitions>
                 <AutoSuggestBox Name="SearchAutoSuggestBox"
                             Grid.Row="0"
@@ -218,7 +218,7 @@
             </Grid>
         </Grid>
 
-        <Grid Grid.Column="1">
+        <Grid Grid.Column="1" x:Name="GridContainer" SizeChanged="GridContainer_SizeChanged">
             <Button Style="{StaticResource ChangViewButtonStyle}" x:Name="ViewChange" Click="ViewChange_Click" Width="50" Height="50" Margin="-25,0,0,0" >
                 <Button.Content>
                     <FontIcon x:Name="ViewIcon"  FontFamily="Segoe MDL2 Assets" />
@@ -227,7 +227,7 @@
             <ScrollViewer Style="{StaticResource ScrollViewerCommonStyle}"
                       VerticalScrollBarVisibility="Auto" Margin="0,24,0,0"
                       HorizontalScrollBarVisibility="Auto" Canvas.ZIndex="-2">
-                <Grid Margin="0,10,0,10" Background="White">
+                <Grid Margin="5,10,5,10" Background="White" HorizontalAlignment="Center">
                     <Image x:Name="imagebox" Stretch="None" />
 
                     <Border x:Name="InvertBorder" BorderBrush="Black">

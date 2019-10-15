@@ -36,7 +36,6 @@ namespace App1
     {
         private ObservableCollection<Regs> AllRegs;
         private List<Regs> RegSuggestions;
-        private Regs LastSelectedReg;
         private bool chang_enable { get; set; }
         public CollectionViewSource collectionRegs { get; set; }
 
@@ -66,22 +65,14 @@ namespace App1
             this.gridView2.ItemsSource = collectionRegs.View;
 
             imagebox.Source = new BitmapImage(new Uri(AllRegs[0].ImageFile));
-            LastSelectedReg = AllRegs[0];
         }
 
         private void gridView2_ItemClick(object sender, ItemClickEventArgs e)
         {
-
             var item = (Regs)e.ClickedItem;
-            if(item!=LastSelectedReg)
-            {
-                //SetSelectEffect(LastSelectedReg, false);
-                LastSelectedReg = item;
-            }
             imagebox.Source = new BitmapImage(new Uri(item.ImageFile));
 
-
-            //SetSelectEffect(item,true);
+            SetImageBox();
         }
 
         private void SetSelectEffect(Regs reg, bool b)
@@ -104,7 +95,6 @@ namespace App1
             {
                 //SetSelectEffect(LastSelectedReg, false);
                 var item = (Regs)gridView2.SelectedItem;
-                LastSelectedReg = item;
                 imagebox.Source = new BitmapImage(new Uri(item.ImageFile));
             }
         }
@@ -230,10 +220,54 @@ namespace App1
 
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            if (GridContainer.ActualWidth <= 860)
+            {
+                imagebox.Width = GridContainer.ActualWidth - 10;
+                imagebox.Stretch = Stretch.Uniform;
+            }
+
+            SearchGrid.Visibility = Visibility.Visible;
+
             if (DateTime.Now.Day % 13 == 0)
             {
                 var uc = new RateDialog();
                 await PopupService.Instance.ShowAsync(uc);
+            }
+        }
+
+        private void GridContainer_SizeChanged(object sender, SizeChangedEventArgs e)
+        {           
+            SetImageBox();
+        }
+
+        private void SetImageBox()
+        {
+            if (imagebox.Source != null && ((BitmapImage)imagebox.Source).PixelWidth != 0)
+            {
+                if (GridContainer.ActualWidth-10 <= ((BitmapImage)imagebox.Source).PixelWidth)
+                {
+                    imagebox.Width = GridContainer.ActualWidth - 10;
+                    imagebox.Stretch = Stretch.Uniform;
+                }
+                else
+                {
+                    imagebox.Width = ((BitmapImage)imagebox.Source).PixelWidth;
+                    imagebox.Stretch = Stretch.None;
+                }
+            }
+        }
+
+        private void RootGrid_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            if (RootGrid.ActualWidth <= 1000)
+            {
+                SearchGrid.Visibility = Visibility.Collapsed;
+                ViewIcon.Glyph = "\uE76C;";
+            }
+            else
+            {
+                SearchGrid.Visibility = Visibility.Visible;
+                ViewIcon.Glyph = "\uE76B;";
             }
         }
     }
